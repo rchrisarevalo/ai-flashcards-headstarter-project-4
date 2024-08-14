@@ -5,7 +5,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="flex min-h-screen min-w-full flex-col gap-5 items-center justify-center p-24">
+    <main className="flex min-h-screen min-w-full flex-col gap-5 mt-20 mb-20 items-center justify-center p-24">
       <section className="text-center space-y-5 ml-20 mr-20">
         <h1 className="text-5xl font-extrabold">FlashbackAI</h1>
         <h5 className="text-3xl font-light">
