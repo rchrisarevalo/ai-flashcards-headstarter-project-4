@@ -16,7 +16,7 @@ const POST = async (req: NextRequest) => {
         price_data: {
           currency: "usd",
           product_data: {
-            name: "FlashbackAI Pro Subscription",
+            name: "BrainflashAI Pro Subscription",
           },
           unit_amount: formatAmountForStripe(10),
           recurring: {

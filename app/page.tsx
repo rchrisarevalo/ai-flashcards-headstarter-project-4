@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950 flex-col gap-20 items-center justify-center p-24">
       <Navigation />
-      <div className="mt-36 mb-16 space-y-20">
-        <section className="text-center space-y-5 ml-20 mr-20">
-          <h1 className="text-5xl font-extrabold">FlashbackAI</h1>
+      <div className="flex flex-col items-center mt-36 mb-16 space-y-20 w-full max-sm:w-screen">
+        <section className="text-center space-y-5 ml-10 mr-10">
+          <h1 className="text-5xl font-extrabold">BrainflashAI</h1>
           <h5 className="text-3xl font-light">
             Tired of having to look through your notes?
           </h5>
@@ -22,11 +22,11 @@ export default function Home() {
             videos to prepare for upcoming quizzes and exams?
           </h5>
         </section>
-        <section className="text-center space-y-5">
+        <section className="text-center space-y-5 ml-10 mr-10">
           <p className="text-2xl font-extralight">
             Look no further than with our AI-powered flashcard application,
             <br></br>
-            <b>FlashbackAI</b>, a tool that can help students simplify their
+            <b>BrainflashAI</b>, a tool that can help students simplify their
             lecture
             <br></br>
             notes into simple flashcards that they can use to memorize
