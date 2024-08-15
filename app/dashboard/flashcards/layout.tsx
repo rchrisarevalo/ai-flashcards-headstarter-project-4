@@ -6,7 +6,7 @@ interface FlashcardsLayoutProps {
 
 const FlashcardsLayout: React.FC<FlashcardsLayoutProps> = ({ children }) => {
     return (
-        <div className="m-1 w-full flex flex-cols min-h-screen justify-evenly items-center">
+        <div className="m-1 w-full flex flex-col min-h-screen justify-evenly items-center">
             { children }
         </div>
     )
