@@ -31,10 +31,10 @@ const setUpAI = async () => {
     return openai;
 }
 
-const GET = async (req: NextRequest) => {
+const POST = async (req: NextRequest) => {
     try {
         const client: OpenAI = await setUpAI()
-        // const data = await req.json()
+        const data = await req.json()
 
         const chat_completion = await client.chat.completions.create({
             messages: [
@@ -60,4 +60,4 @@ const GET = async (req: NextRequest) => {
     }
 }
 
-export { GET };
+export { POST };
