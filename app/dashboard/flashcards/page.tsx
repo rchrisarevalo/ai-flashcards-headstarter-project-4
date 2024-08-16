@@ -12,7 +12,7 @@ const Flashcards = () => {
   const generateFlashcards = async (e: React.FormEvent<HTMLFormElement>) => {
     // Prevent page reload.
     e.preventDefault();
-    
+
     // Implement a try-catch block to handle
     // unexpected errors.
     try {
@@ -56,8 +56,8 @@ const Flashcards = () => {
       // key value to true to show it.
       if (!data[i].shown) {
         data[i].shown = true;
-      } 
-      
+      }
+
       // Otherwise, set it to false to hide it.
       else {
         data[i].shown = false;
@@ -89,21 +89,56 @@ const Flashcards = () => {
           Generate Flashcards
         </button>
       </form>
-      <section className="grid grid-cols-3 place-items-center max-sm:grid-cols-2 text-black gap-10 ml-7 mr-7">
-        {flashcards.map((card, i) => (
-          <figure
-            key={`flashcard-${i}`}
-            className="flex flex-row items-center p-10 rounded-lg bg-slate-300 space-y-5 h-60 w-3/4"
-            onClick={() => showCard(i)}
+      {flashcards.length > 0 && (
+        <section className="grid grid-cols-3 place-items-center max-sm:grid-cols-2 text-black gap-10 ml-7 mr-7">
+          {/* <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "20px",
+              boxSizing: "border-box",
+              backgroundColor: "#fff",
+            }}
           >
-            {!flashcards[i].shown ? (
-              <h1 className="text-2xl font-extrabold">{card.front}</h1>
-            ) : (
-              <p className="text-lg">{card.back}</p>
-            )}
-          </figure>
-        ))}
-      </section>
+            <h5>{flashcards[0].front}</h5>
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              backfaceVisibility: "hidden",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "20px",
+              boxSizing: "border-box",
+              backgroundColor: "#fff",
+              transform: "rotateY(180deg)",
+            }}
+          >
+            <h5>{flashcards[0].back}</h5>
+          </div> */}
+          {flashcards.map((card, i) => (
+            <figure
+              key={`flashcard-${i}`}
+              className="flex flex-row items-center p-10 rounded-lg cursor-pointer bg-slate-300 space-y-5 h-60 w-3/4"
+              onClick={() => showCard(i)}
+            >
+              {!card.shown ? (
+                <h1 className="text-2xl font-extrabold">{card.front}</h1>
+              ) : (
+                <p className="text-lg">{card.back}</p>
+              )}
+            </figure>
+          ))}
+        </section>
+      )}
     </>
   );
 };
