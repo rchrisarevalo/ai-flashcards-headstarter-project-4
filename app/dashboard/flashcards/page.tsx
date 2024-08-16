@@ -44,10 +44,6 @@ const Flashcards = () => {
       throw new Error("Failed to generate flashcards.");
     } finally {
       setLoading(false);
-      if(flashcards.length == 0)
-      {
-        print("unknown topic")
-      }
     }
   };
 
@@ -110,7 +106,7 @@ const Flashcards = () => {
         </div>
       ) :
       (flashcards.length > 0 && (
-        <section className="grid grid-cols-2 place-items-center max-sm:grid-cols-1 text-black gap-10 m-7 mt-10">
+        <section className="grid grid-cols-3 place-items-center max-sm:grid-cols-1 text-black gap-10 m-7 mt-10">
           {flashcards.map((card, i) => (
             <figure
               key={`flashcard-${i}`}
