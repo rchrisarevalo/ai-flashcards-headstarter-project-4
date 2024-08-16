@@ -1,10 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Flashcard, FlashcardResponse } from "@/app/types/types.config";
-import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  writeBatch,
+} from "firebase/firestore";
 import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ReactCardFlip from "react-card-flip";
 
 const Flashcards = () => {
@@ -15,6 +21,25 @@ const Flashcards = () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get("id");
+
+  useEffect(() => {
+    async function getFlashCards() {
+      if (!search || !user) return;
+
+      const collRef = collection(doc(collection(db, "users"), user.id), search);
+      const docs = await getDocs(collRef);
+      const flashcards: Flashcard[] = [];
+
+      docs.forEach((doc) => {
+        flashcards.push({ id: doc.id, ...doc.data() } as Flashcard);
+      });
+      setFlashcards(flashcards);
+    }
+    getFlashCards();
+  }, [user, search]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -105,13 +130,8 @@ const Flashcards = () => {
     const userDocRef = doc(collection(db, "users"), user!.id);
     const docSnap = await getDoc(userDocRef);
 
-    console.log("User ID:", user!.id);
-    console.log("Document Snapshot Exists:", docSnap.exists()); // Debugging line
-    console.log("User Document Reference:", userDocRef); // Debugging line
-
     if (docSnap.exists()) {
       // if a user document exists continue
-      console.log("docsnap exists"); // Debugging line
       const collections = docSnap.data().flashcards || [];
 
       if (collections.find((f: { name: string }) => f.name === name)) {
@@ -127,11 +147,18 @@ const Flashcards = () => {
     } else {
       // if a user document does not exist, create a new document for the user and
       // save the flashcard collection in a batch
-      console.log("Document does not exist."); // Debugging line
       batch.set(userDocRef, { flashcards: [{ name }] });
     }
 
+    // Store each flashcard in the collection
+    const collRef = collection(userDocRef, name);
+    flashcards.forEach((flashcard) => {
+      const cardDocRef = doc(collRef);
+      batch.set(cardDocRef, flashcard);
+    });
+
     // Commit the batch to the db and route to dashboard/flashcards
+    console.log("Batch:", batch); // Debugging line
     await batch.commit();
     handleClose();
     router.push("/dashboard/flashcards");
