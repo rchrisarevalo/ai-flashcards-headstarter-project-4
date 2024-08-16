@@ -6,6 +6,7 @@ import ReactCardFlip from 'react-card-flip';
 const Flashcards = () => {
   const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
   const [description, setDescription] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
  
   // Function that will use the OpenAI API to generate a list
   // of flashcards, which will be stored in its respective
@@ -13,6 +14,7 @@ const Flashcards = () => {
   const generateFlashcards = async (e: React.FormEvent<HTMLFormElement>) => {
     // Prevent page reload.
     e.preventDefault();
+    setLoading(true);
 
     // Implement a try-catch block to handle
     // unexpected errors.
@@ -40,6 +42,8 @@ const Flashcards = () => {
       // Throw an error message in case flashcards failed
       // to be generated.
       throw new Error("Failed to generate flashcards.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,7 +96,16 @@ const Flashcards = () => {
           Generate Flashcards
         </button>
       </form>
-      {flashcards.length > 0 && (
+      {loading ? (
+        <div className="flex items-center justify-center h-40">
+          <svg className="w-12 h-12 text-[#1476bc] animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+          </svg>
+          <h1 className="p-5 font-semibold text-xl">    Generating...</h1>
+        </div>
+      ) :
+      flashcards.length > 0 ? (
         <section className="grid grid-cols-2 place-items-center max-sm:grid-cols-1 text-black gap-10 m-7 mt-10">
           {/* <div
             style={{
@@ -144,7 +157,7 @@ const Flashcards = () => {
             </figure>
           ))}
         </section>
-      )}
+      ):  <h1>Unknown topic, please add notes or try another topic</h1>}
     </>
   );
 };
