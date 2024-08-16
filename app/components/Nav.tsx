@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import mainLogo from "../images/mainLogo.png"
+import mainLogo from "../images/mainLogo.png";
 import { useAuth, SignOutButton } from "@clerk/nextjs";
 
 const Navigation = () => {
@@ -11,13 +11,13 @@ const Navigation = () => {
     <nav className="flex flex-row fixed top-0 w-screen z-10 bg-white p-5 justify-between items-center shadow-lg">
       <ul>
         <li>
-            <Link href={auth?.isSignedIn ? "/dashboard" : "/"}>
+          <Link href="/">
             <img
               src={mainLogo.src} // Update with the correct path to your logo
               alt="BrainFlashAI Logo"
               className="sm:h-12" // Adjust the height as needed
             />
-            </Link>
+          </Link>
         </li>
       </ul>
       {!auth?.isSignedIn ? (
