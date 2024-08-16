@@ -10,5 +10,6 @@ export type FlashcardResponse = {
 
 export type Flashcard = {
     front: string,
-    back: string
+    back: string,
+    shown: boolean
 }
