@@ -44,6 +44,10 @@ const Flashcards = () => {
       throw new Error("Failed to generate flashcards.");
     } finally {
       setLoading(false);
+      if(flashcards.length == 0)
+      {
+        print("unknown topic")
+      }
     }
   };
 
@@ -105,41 +109,8 @@ const Flashcards = () => {
           <h1 className="p-5 font-semibold text-xl">    Generating...</h1>
         </div>
       ) :
-      flashcards.length > 0 ? (
+      (flashcards.length > 0 && (
         <section className="grid grid-cols-2 place-items-center max-sm:grid-cols-1 text-black gap-10 m-7 mt-10">
-          {/* <div
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              backfaceVisibility: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "20px",
-              boxSizing: "border-box",
-              backgroundColor: "#fff",
-            }}
-          >
-            <h5>{flashcards[0].front}</h5>
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              backfaceVisibility: "hidden",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "20px",
-              boxSizing: "border-box",
-              backgroundColor: "#fff",
-              transform: "rotateY(180deg)",
-            }}
-          >
-            <h5>{flashcards[0].back}</h5>
-          </div> */}
           {flashcards.map((card, i) => (
             <figure
               key={`flashcard-${i}`}
@@ -155,9 +126,10 @@ const Flashcards = () => {
              </div>
            </ReactCardFlip>
             </figure>
-          ))}
+          )
+          )}
         </section>
-      ):  <h1>Unknown topic, please add notes or try another topic</h1>}
+      ))}
     </>
   );
 };
