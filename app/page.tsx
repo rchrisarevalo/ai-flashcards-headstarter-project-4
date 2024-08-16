@@ -10,7 +10,8 @@ export default function Home() {
   const auth = useAuth();
 
   return (
-    <main className="flex min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] flex-col items-center justify-center p-10" style={{ fontFamily: "'Roboto', sans-serif" }}>
+    <main className="flex min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] flex-col items-center justify-center p-10" 
+    style={{ fontFamily: "'Roboto', sans-serif" }}>
       <Navigation />
       <div className="flex flex-col items-center mt-36 mb-16 space-y-16 w-full max-w-4xl max-sm:w-screen">
         <section className="text-center space-y-5 px-6">

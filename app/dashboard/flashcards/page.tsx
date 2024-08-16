@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Flashcard, FlashcardResponse } from "@/app/types/types.config";
+import ReactCardFlip from 'react-card-flip';
 
 const Flashcards = () => {
   const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
   const [description, setDescription] = useState<string>("");
-
+ 
   // Function that will use the OpenAI API to generate a list
   // of flashcards, which will be stored in its respective
   // state variable of the same name.
@@ -72,25 +73,27 @@ const Flashcards = () => {
 
   return (
     <>
-      <form onSubmit={generateFlashcards} className="p-10 flex flex-col gap-16">
-        <label className="text-4xl text-center">Enter Your Notes</label>
+      <form onSubmit={generateFlashcards} className="p-10 flex flex-col gap-16 w-full bg-gradient-to-t from-[#1476bc] to-[#9fbedb] rounded-lg shadow-lg max-w-3xl mx-auto">
+        <label className="text-4xl text-center font-semibold text-white"
+        style={{ fontFamily: "'Raleway', sans-serif" }}>Enter Your Notes</label>
         <textarea
           cols={30}
           rows={10}
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          className="p-5 text-black outline-none resize-none rounded-lg border-none"
+          className="p-5 text-black outline-none resize-none rounded-lg border-none w-full h-40 overflow-y-auto"
+          placeholder="Type your lecture notes or topic here..."
           required
         ></textarea>
         <button
           type="submit"
-          className="p-5 bg-white rounded-lg text-black font-extrabold text-xl"
-        >
+          className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d]"
+          style={{ fontFamily: "'Raleway', 'sans-serif" }}>
           Generate Flashcards
         </button>
       </form>
       {flashcards.length > 0 && (
-        <section className="grid grid-cols-3 place-items-center max-sm:grid-cols-2 text-black gap-10 ml-7 mr-7">
+        <section className="grid grid-cols-2 place-items-center max-sm:grid-cols-1 text-black gap-10 m-7 mt-10">
           {/* <div
             style={{
               position: "absolute",
@@ -127,14 +130,17 @@ const Flashcards = () => {
           {flashcards.map((card, i) => (
             <figure
               key={`flashcard-${i}`}
-              className="flex flex-row items-center p-10 rounded-lg cursor-pointer bg-slate-300 space-y-5 h-60 w-3/4"
+              className={`flex items-center justify-center rounded-lg cursor-pointer w-64 h-40`}
               onClick={() => showCard(i)}
             >
-              {!card.shown ? (
-                <h1 className="text-2xl font-extrabold">{card.front}</h1>
-              ) : (
-                <p className="text-lg">{card.back}</p>
-              )}
+              <ReactCardFlip isFlipped={card.shown} flipDirection="horizontal" containerStyle={{width:'100%', height: '100%'}}>
+               <div className="flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+               <h5 className="text-xl">{card.front}</h5>
+             </div>
+             <div className="flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+               <h5 className="text-xl">{card.back}</h5>
+             </div>
+           </ReactCardFlip>
             </figure>
           ))}
         </section>
