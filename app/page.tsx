@@ -5,6 +5,7 @@ import { SignOutButton, useAuth } from "@clerk/nextjs";
 import "@fontsource/raleway";
 import "@fontsource/roboto";
 import Link from "next/link";
+import roundLogo from "./images/roundLogo.png"
 
 export default function Home() {
   const router = useRouter();
@@ -12,12 +13,14 @@ export default function Home() {
 
   return (
     <main
-      className="flex min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] flex-col items-center justify-center p-10"
+      className="flex flex-col min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] items-center justify-center"
       style={{ fontFamily: "'Roboto', sans-serif" }}
     >
       <Navigation />
-      <div className="flex flex-col items-center mt-36 mb-16 space-y-16 w-full max-w-4xl max-sm:w-screen">
-        <section className="text-center space-y-5 px-6">
+      <div className="flex flex-col mt-36 mb-36 space-y-16 w-full max-w-4xl max-sm:w-screen">
+      <div className="flex flex-col sm:flex-row items-center space-y-16 sm:space-y-0 sm:space-x-10">
+        <div className="flex flex-col space-y-10 w-full sm:w-1/2">
+        <section className="text-center sm:text-left space-y-5 px-6">
           <h1
             className="text-6xl font-extrabold text-[#1476b]"
             style={{ fontFamily: "'Raleway', sans-serif" }}
@@ -31,7 +34,7 @@ export default function Home() {
             Tired of those long never-ending exam prep videos?
           </h5>
         </section>
-        <section className="text-center space-y-5 px-6">
+        <section className="text-center sm:text-left space-y-5 px-6">
           <p className="text-2xl font-extralight text-gray-600">
             Meet{" "}
             <b
@@ -48,12 +51,21 @@ export default function Home() {
             helping you memorize and understand concepts better!
           </p>
         </section>
-        <section className="text-center space-y-5 max-w-md mx-auto max-sm:ml-20 max-sm:mr-20">
+        </div>
+        <div className="flex items-center justify-center w-full sm:w-1/2">
+        <img
+          src={roundLogo.src}
+          alt="BrainflashAI Preview"
+          className="max-w-full h-auto rounded-lg"
+        />
+      </div>
+        </div>
+        <section className="text-center space-y-5 max-w-md sm:text-left mx-auto">
           <p className="text-2xl font-semibold text-gray-700">
             Create an account or sign in to start mastering your studies!
           </p>
         </section>
-        <section className="flex flex-col sm:flex-row items-center font-bold gap-5 justify-center">
+        <section className="flex flex-col sm:flex-row items-center font-bold gap-5 justify-center sm:justify-start">
           {!auth?.isSignedIn ? (
             <>
               <button
@@ -73,7 +85,7 @@ export default function Home() {
             <SignOutButton />
           )}
         </section>
-        <section className="flex flex-wrap justify-center gap-5">
+        <section className="flex flex-wrap justify-center sm:justify-start gap-5">
           <Link href="/dashboard">
             <figure className="bg-white text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-60 h-60 flex items-center justify-center">
               <span className="text-xl font-semibold">My Dashboard</span>
