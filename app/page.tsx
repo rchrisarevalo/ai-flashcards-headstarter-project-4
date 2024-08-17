@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main
-      className="flex flex-col min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] items-center justify-center"
+      className="flex flex-col min-h-screen bg-gradient-to-t from-[#1476bc] via-[#9fbedb] to-[#ffffff] items-center justify-center p-10"
       style={{ fontFamily: "'Roboto', sans-serif" }}
     >
       <Navigation />
