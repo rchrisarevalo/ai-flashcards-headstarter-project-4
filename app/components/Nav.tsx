@@ -32,6 +32,12 @@ const Navigation = () => {
       ) : (
         <ul className="flex flex-row space-between p-2 gap-10">
           <li className="p-3">
+          <Link href="/dashboard"> My Dashboard</Link>
+            </li>
+            <li className="p-3">
+            <Link href="/dashboard/flashcards"> Generate New Set </Link>
+            </li>
+          <li className="p-3">
             <SignOutButton />
           </li>
         </ul>
