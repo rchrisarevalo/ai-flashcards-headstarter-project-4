@@ -13,7 +13,8 @@ const nextConfig = {
         CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
         OPENAI_API_KEY: process.env.OPENAI_API_KEY,
         STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
-        STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY
+        STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+        G_TAG: process.env.G_TAG
     }
 };
 

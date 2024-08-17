@@ -12,6 +12,7 @@ import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import ReactCardFlip from "react-card-flip";
+import ReactGA from "react-ga4";
 
 const Flashcards = () => {
   const { user } = useUser();
@@ -24,6 +25,14 @@ const Flashcards = () => {
 
   const searchParams = useSearchParams();
   const search = searchParams.get("id");
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/dashboard/flashcards",
+      title: "Flashcard Generation Page",
+    });
+  }, []);
 
   useEffect(() => {
     async function getFlashCards() {
@@ -48,6 +57,10 @@ const Flashcards = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleNoCards = () => {
+    alert("Please generate flashcards first before saving.")
+  }
 
   // Function that will use the OpenAI API to generate a list
   // of flashcards, which will be stored in its respective
@@ -158,7 +171,6 @@ const Flashcards = () => {
     });
 
     // Commit the batch to the db and route to dashboard/flashcards
-    console.log("Batch:", batch); // Debugging line
     await batch.commit();
     handleClose();
     router.push("/dashboard/flashcards");
@@ -251,7 +263,7 @@ const Flashcards = () => {
         }}
       >
         <button
-          onClick={handleOpen}
+          onClick={flashcards.length > 0 ? handleOpen : handleNoCards} // Only call handleOpen if flashcards exist
           className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d]"
           style={{
             padding: "10px 20px",

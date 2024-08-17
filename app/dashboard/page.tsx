@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import ReactGA from "react-ga4";
 
 import "@fontsource/raleway";
 import "@fontsource/roboto";
@@ -14,6 +16,10 @@ const Dashboard = () => {
   const { user } = useUser();
   const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    ReactGA.send({hitType: 'pageview', page: "/dashboard", title: "Dashboard Page"})
+  }, [])
 
   useEffect(() => {
     async function getFlashcardCollection() {
@@ -39,17 +45,22 @@ const Dashboard = () => {
   return (
     <>
       <h1
-        className="text-6xl max-sm:text-5xl font-extrabold text-[#1476bc] text-center"
+        className="text-6xl max-sm:text-5xl font-extrabold text-[#1476bc] text-center mt-20"
         style={{ fontFamily: "'Raleway', sans-serif" }}
       >
         Your Dashboard
       </h1>
       <i
-        className="text-xl ml-7 mr-7 font-light text-center block mb-10"
+        className="text-xl ml-7 mr-7 font-light text-center block"
         style={{ fontFamily: "'Roboto', sans-serif" }}
       >
         Flashcard Collection
       </i>
+      <Link href="/dashboard/flashcards">
+            <figure className="bg-white border-4 border-[#1476bc] text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-100 h-30 flex items-center justify-center">
+              <span className="text-xl font-semibold">Generate New Set</span>
+            </figure>
+          </Link>
       <section className="grid grid-cols-3 max-sm:grid-cols-1 gap-10 items-center p-5 bg-white">
         {flashcards.map((flashcard, index) => (
           <figure
