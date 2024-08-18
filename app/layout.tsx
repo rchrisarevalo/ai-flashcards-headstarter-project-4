@@ -7,9 +7,10 @@ const inter = Inter_Tight({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "BrainflashAI",
-  authors: {name: "Ruben Arevalo, Mauro Castillo, Maviya Yaseen, Henry Tran"},
+  authors: { name: "Ruben Arevalo, Mauro Castillo, Maviya Yaseen, Henry Tran" },
   keywords: ["AI", "AI flashcards", "BrainflashAI", "AI study cards"],
   description: "An AI-powered flashcard app that helps students remember complex concepts in mere minutes!",
+  metadataBase: new URL("https://www.brainflashai.com/"),
 };
 
 export default function RootLayout({
