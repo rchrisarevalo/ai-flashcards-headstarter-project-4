@@ -241,13 +241,13 @@ const Flashcards = () => {
                 <ReactCardFlip
                   isFlipped={card.shown}
                   flipDirection="horizontal"
-                  containerStyle={{ width: "100%", height: "100%" }}
+                  containerStyle={{ width: "100%", height: "100%", }}
                 >
-                  <div className="flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+                  <div className="overflow-y-auto overflow-x-hidden flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
                     <h5 className="text-xl">{card.front}</h5>
                   </div>
-                  <div className="flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
-                    <h5 className="text-xl">{card.back}</h5>
+                  <div className="overflow-y-auto overflow-x-hidden items-center flex justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+                    {card.back}
                   </div>
                 </ReactCardFlip>
               </figure>

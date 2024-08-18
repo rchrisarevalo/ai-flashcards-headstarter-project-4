@@ -92,12 +92,12 @@ export default function Home() {
             <>
             <section className="flex flex-wrap justify-start sm:justify-center gap-5">
           <Link href="/dashboard">
-            <figure className="bg-white text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-50 h-20 flex items-center justify-center">
+            <figure className="bg-white hover:bg-slate-100 text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-50 h-20 flex items-center justify-center">
               <span className="text-xl font-semibold">My Dashboard</span>
             </figure>
           </Link>
           <Link href="/dashboard/flashcards">
-            <figure className="bg-white text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-50 h-20 flex items-center justify-center">
+            <figure className="bg-white hover:bg-slate-100 text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-50 h-20 flex items-center justify-center">
               <span className="text-xl font-semibold">Generate New Set</span>
             </figure>
           </Link>
