@@ -44,6 +44,10 @@ const Navigation = () => {
               <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span></Link>
           </li>
           <li className="p-3 group">
+            <Link href="/dashboard/plans" className="relative inline-block"> Plans
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span></Link>
+          </li>
+          <li className="p-3 group">
             <div className="relative inline-block">
               <SignOutButton />
               <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>

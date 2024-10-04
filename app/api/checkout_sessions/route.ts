@@ -12,7 +12,13 @@ const GET = async (req: NextRequest) => {
   const session_id = searchParams.get('session_id')
 
   try {
-    const checkout_session = await stripe.checkout.sessions.retrieve(session_id as string)
+    const checkout_session = await stripe.checkout.sessions.retrieve(session_id as string, {
+      expand: ['line_items']
+    })
+
+    const subscription = await stripe.subscriptions.retrieve(
+      "sub_1PphYsP0yjUw8f1l2bEipRs6"
+    );
 
     return NextResponse.json(checkout_session, {
       status: 200

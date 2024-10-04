@@ -199,7 +199,7 @@ const Flashcards = () => {
         ></textarea>
         <button
           type="submit"
-          className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d]"
+          className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-blue-900 hover:border-2 hover:border-blue-400"
           style={{ fontFamily: "'Raleway', 'sans-serif" }}
         >
           Generate Flashcards
@@ -256,6 +256,7 @@ const Flashcards = () => {
         )
       )}
       <div
+      className="w-full"
         style={{
           marginTop: "16px",
           display: "flex",
@@ -264,11 +265,10 @@ const Flashcards = () => {
       >
         <button
           onClick={flashcards.length > 0 ? handleOpen : handleNoCards} // Only call handleOpen if flashcards exist
-          className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d]"
+          className="p-5 w-1/4 bg-[#1476bc] text-white rounded-lg shadow-lg font-bold text-xl transition-colors hover:bg-blue-900 hover:border-blue-400 hover:border-2"
           style={{
             padding: "10px 20px",
             color: "white",
-            border: "none",
             borderRadius: "4px",
           }}
         >
@@ -288,8 +288,8 @@ const Flashcards = () => {
             boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
           }}
         >
-          <h6>Save Flashcards</h6>
-          <p>Please enter a name for your flashcards collection</p>
+          <h6 className="pb-4 font-bold text-xl text-blue-900">Save Flashcards</h6>
+          <p className="pb-2"><i>Please enter a name for your flashcards collection</i></p>
           <input
             type="text"
             value={name}
@@ -297,20 +297,20 @@ const Flashcards = () => {
             placeholder="Collection Name"
             style={{
               width: "100%",
-              marginBottom: "16px",
+              marginBottom: "30px",
               padding: "8px",
               borderRadius: "4px",
-              border: "1px solid #ccc",
+              border: "2px solid #ccc",
               color: "black",
             }}
           />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <button
               onClick={handleClose}
+              className=" w-1/2 font-bold mr-10 shadow-lg hover:bg-blue-100 hover:border-black hover:border-2"
               style={{
                 padding: "10px",
                 backgroundColor: "#ccc",
-                border: "none",
                 borderRadius: "4px",
               }}
             >
@@ -318,11 +318,9 @@ const Flashcards = () => {
             </button>
             <button
               onClick={saveFlashcards}
+              className="bg-[#1476bc] w-1/2 font-bold text-white hover:bg-blue-300 hover:text-black hover:border-2 hover:border-blue-900"
               style={{
                 padding: "10px",
-                backgroundColor: "#1476bc",
-                color: "white",
-                border: "none",
                 borderRadius: "4px",
               }}
             >
