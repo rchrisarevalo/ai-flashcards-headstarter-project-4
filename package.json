@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.3.1",
+    "@clerk/nextjs": "^6.0.2",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@fontsource/raleway": "^5.0.19",
     "@fontsource/roboto": "^5.0.14",
     "@mui/material": "^5.16.7",
     "@stripe/stripe-js": "^4.3.0",
-    "firebase": "^10.13.0",
+    "firebase": "^11.0.1",
     "next": "14.2.5",
     "openai": "^4.55.9",
     "react": "^18",

@@ -18,14 +18,18 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
-    ReactGA.send({hitType: 'pageview', page: "/dashboard", title: "Dashboard Page"})
-  }, [])
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/dashboard",
+      title: "Dashboard Page",
+    });
+  }, []);
 
   useEffect(() => {
     async function getFlashcardCollection() {
       if (!user) return;
 
-      const docRef = doc(collection(db, "users"), user.id);
+      const docRef = doc(collection(db, "users"), user?.id);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -57,10 +61,10 @@ const Dashboard = () => {
         Flashcard Collection
       </i>
       <Link href="/dashboard/flashcards">
-            <figure className="hover:bg-slate-100 bg-white border-4 border-[#1476bc] text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-100 h-30 flex items-center justify-center">
-              <span className="text-xl font-semibold">Generate New Set</span>
-            </figure>
-          </Link>
+        <figure className="hover:bg-slate-100 bg-white border-4 border-[#1476bc] text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-100 h-30 flex items-center justify-center">
+          <span className="text-xl font-semibold">Generate New Set</span>
+        </figure>
+      </Link>
       <section className="grid grid-cols-3 max-sm:grid-cols-1 gap-10 items-center p-5 bg-white">
         {flashcards.map((flashcard, index) => (
           <figure
