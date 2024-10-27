@@ -3,9 +3,9 @@ import { NextRequest } from "next/server";
 
 const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/result(.*)'])
 
-export default clerkMiddleware((auth: ClerkMiddlewareAuth, req: NextRequest) => {
-  if (isProtectedRoute(req) && !auth().userId) {
-    auth().redirectToSignIn()
+export default clerkMiddleware(async (auth: ClerkMiddlewareAuth, req: NextRequest) => {
+  if (isProtectedRoute(req)) {
+    await auth.protect()
   }
 });
 
