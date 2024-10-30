@@ -47,7 +47,7 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <span className="mt-24 mb-24 max-sm:mt-5 space-y-10">
       <h1
         className="text-6xl max-sm:text-5xl font-extrabold text-[#1476bc] text-center mt-20"
         style={{ fontFamily: "'Raleway', sans-serif" }}
@@ -60,8 +60,9 @@ const Dashboard = () => {
       >
         Flashcard Collection
       </i>
+      <br></br>
       <Link href="/dashboard/flashcards">
-        <figure className="hover:bg-slate-100 bg-white border-4 border-[#1476bc] text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-100 h-30 flex items-center justify-center">
+        <figure className="hover:bg-slate-100 bg-white border-4 border-[#1476bc] text-black p-8 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-100 h-30 flex items-center justify-center ml-[30%] mr-[30%] max-sm:ml-[10%] max-sm:mr-[10%]">
           <span className="text-xl font-semibold">Generate New Set</span>
         </figure>
       </Link>
@@ -72,13 +73,13 @@ const Dashboard = () => {
             key={index}
             onClick={() => handleCardClick(flashcard.name)}
           >
-            <h3 className="text-2xl font-extrabold text-[#1476bc]">
+            <h3 className="text-2xl font-extrabold text-[#1476bc] text-center">
               {flashcard.name}
             </h3>
           </figure>
         ))}
       </section>
-    </>
+    </span>
   );
 };
 
